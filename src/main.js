@@ -120,18 +120,27 @@ function createOrbitLine(radius, color = 0xffffff) {
 
 // Textures
 const textureLoader = new THREE.TextureLoader();
-const sunTexture = textureLoader.load("8k_sun.jpg");
-const mercuryTexture = textureLoader.load("/8k_mercury.jpg");
-const venusTexture = textureLoader.load("/8k_venus_surface.jpg");
-const earthTexture = textureLoader.load("/8k_earth_daymap.jpg");
-const earthCloudTexture = textureLoader.load("/8k_earth_clouds.jpg");
-const marsTexture = textureLoader.load("/8k_mars.jpg");
-const jupiterTexture = textureLoader.load("/8k_jupiter.jpg");
-const saturnTexture = textureLoader.load("/8k_saturn.jpg");
-const saturnRingsTexture = textureLoader.load("/8k_saturn_ring_alpha.png");
-const uranusTexture = textureLoader.load("/2k_uranus.jpg");
-const neptuneTexture = textureLoader.load("/2k_neptune.jpg");
-const moonTexture = textureLoader.load("/8k_moon.jpg");
+const base = import.meta.env.BASE_URL;
+
+const sunTexture = textureLoader.load(base + "8k_sun.jpg");
+const mercuryTexture = textureLoader.load(base + "8k_mercury.jpg");
+const venusTexture = textureLoader.load(base + "8k_venus_surface.jpg");
+
+const earthTexture = textureLoader.load(base + "8k_earth_daymap.jpg");
+const earthCloudTexture = textureLoader.load(base + "8k_earth_clouds.jpg");
+
+const marsTexture = textureLoader.load(base + "8k_mars.jpg");
+const jupiterTexture = textureLoader.load(base + "8k_jupiter.jpg");
+
+const saturnTexture = textureLoader.load(base + "8k_saturn.jpg");
+const saturnRingsTexture = textureLoader.load(
+  base + "8k_saturn_ring_alpha.png",
+);
+
+const uranusTexture = textureLoader.load(base + "2k_uranus.jpg");
+const neptuneTexture = textureLoader.load(base + "2k_neptune.jpg");
+
+const moonTexture = textureLoader.load(base + "8k_moon.jpg");
 
 // OBJECTS
 const sun = new THREE.Mesh(
