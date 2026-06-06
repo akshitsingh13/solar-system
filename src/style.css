@@ -1,0 +1,270 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+
+/* Canvas */
+canvas {
+  display: block;
+}
+
+/* ─── Adaptive visibility ─────────────────────────────────── */
+/* On desktop (>= 768px): hide mobile-only blocks              */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+/* On mobile / tablet (< 768px): hide desktop-only blocks      */
+@media (max-width: 767px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Hamburger Toggle Button */
+.menu-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  font-size: 24px;
+  line-height: 1;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid oklch(100% 0.00011 271.152 / 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+#ui {
+  position: absolute;
+  top: 75px;
+  left: 20px;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  background: rgba(0, 0, 0, 0);
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  max-width: 280px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ui-hidden {
+  display: none !important;
+}
+
+#ui button {
+  padding: 10px 14px;
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+#ui button:hover,
+#ui button:active {
+  background: white;
+  color: black;
+}
+
+#ui p {
+  color: #ddd;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.ui-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Visual divider inside UI panel */
+.ui-divider {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 4px 0;
+}
+
+.navigation-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.instructions-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.control-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.section-heading {
+  margin: 0;
+  color: #4dabf7;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.control-list {
+  margin: 0;
+  padding-left: 16px;
+  font-size: 13px;
+  color: #ccc;
+  line-height: 1.5;
+}
+
+.instructions-tip {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 8px;
+  font-size: 11px;
+  color: #aaaaaa;
+  line-height: 1.4;
+}
+
+/* ─── Nav button grid (mobile quick-nav) ─────────────────── */
+.nav-btn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.nav-btn-grid--2col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.nav-btn {
+  padding: 9px 6px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* highlight active planet button */
+.nav-btn.active {
+  background: rgba(77, 171, 247, 0.25) !important;
+  border-color: #4dabf7 !important;
+  color: #4dabf7 !important;
+}
+
+#camera-indicator {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+}
+
+#cam-type {
+  color: #4dabf7;
+  text-transform: uppercase;
+}
+
+#cam-target {
+  color: #eccc9a;
+  text-transform: uppercase;
+}
+
+/* ─── Responsive: mobile / tablet (< 768px) ─────────────── */
+@media (max-width: 767px) {
+  #ui {
+    top: auto;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: none;
+    max-height: 52vh;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(12px);
+    /* Scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  #ui p {
+    font-size: 13px;
+  }
+
+  /* The top-level "Orbit On/Off" button spans full width */
+  #ui > button#toggleOrbit {
+    width: 100%;
+  }
+
+  .nav-btn-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .nav-btn {
+    padding: 10px 6px !important;
+    font-size: 12px !important;
+  }
+
+  #camera-indicator {
+    top: 20px;
+    right: 50%;
+    transform: translateX(50%);
+
+    width: 90%;
+    max-width: none;
+
+    text-align: center;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
+
+/* ─── Responsive: tablet-only tweaks (768–1024px) ───────── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #ui {
+    max-width: 300px;
+  }
+}

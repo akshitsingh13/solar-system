@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>my-three-app</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="camera-indicator">
+      Camera: <span id="cam-type">Global</span> | Target:
+      <span id="cam-target">Solar System</span>
+    </div>
+
+    <button id="menuToggle" class="menu-toggle">☰</button>
+
+    <div id="ui" class="ui-hidden">
+      <button id="toggleOrbit">Orbit On/Off</button>
+
+      <!-- Desktop-only shortcut reference -->
+      <div class="ui-section desktop-only">
+        <p><b>Navigation</b></p>
+        <p>Esc → Global view</p>
+        <p>1–8 → Planets</p>
+        <p>0 → Moon</p>
+      </div>
+
+      <div class="ui-section desktop-only">
+        <p><b>Controls</b></p>
+        <p>F → Free camera</p>
+        <p>Space → Pause/Resume</p>
+      </div>
+
+      <!-- Mobile-only quick-nav buttons -->
+      <div class="ui-section mobile-only">
+        <p><b>Navigate To</b></p>
+        <div class="nav-btn-grid">
+          <button class="nav-btn" data-action="global">🌌 System</button>
+          <button class="nav-btn" data-action="planet" data-index="0">
+            ☿ Mercury
+          </button>
+          <button class="nav-btn" data-action="planet" data-index="1">
+            ♀ Venus
+          </button>
+          <button class="nav-btn" data-action="planet" data-index="2">
+            🌍 Earth
+          </button>
+          <button class="nav-btn" data-action="moon">🌙 Moon</button>
+          <button class="nav-btn" data-action="planet" data-index="3">
+            ♂ Mars
+          </button>
+          <button class="nav-btn" data-action="planet" data-index="4">
+            ♃ Jupiter
+          </button>
+          <button class="nav-btn" data-action="planet" data-index="5">
+            ♄ Saturn
+          </button>
+          <button class="nav-btn" data-action="planet" data-index="6">
+            ⛢ Uranus
+          </button>
+          <button class="nav-btn" data-action="planet" data-index="7">
+            ♆ Neptune
+          </button>
+        </div>
+      </div>
+
+      <div class="ui-section mobile-only">
+        <p><b>Controls</b></p>
+        <div class="nav-btn-grid nav-btn-grid--2col">
+          <button class="nav-btn" data-action="free">🎥 Free Cam</button>
+          <button class="nav-btn" data-action="pause">⏸ Pause</button>
+        </div>
+      </div>
+
+      <hr class="ui-divider" />
+
+      <!-- Desktop instructions -->
+      <div class="navigation-instructions desktop-only">
+        <h3 class="instructions-title">🖱️ Mouse &amp; Touchpad</h3>
+
+        <div class="control-section">
+          <h4 class="section-heading">Using a Mouse</h4>
+          <ul class="control-list">
+            <li><strong>Orbit:</strong> Left-click &amp; drag</li>
+            <li><strong>Zoom:</strong> Scroll mouse wheel</li>
+            <li><strong>Pan:</strong> Right-click &amp; drag</li>
+          </ul>
+        </div>
+
+        <div class="control-section">
+          <h4 class="section-heading">Using a Touchpad</h4>
+          <ul class="control-list">
+            <li><strong>Orbit:</strong> One-finger drag</li>
+            <li><strong>Zoom:</strong> Two-finger pinch</li>
+            <li><strong>Pan:</strong> Two-finger swipe</li>
+          </ul>
+        </div>
+
+        <div class="instructions-tip">
+          <strong>Tip:</strong> When a planet camera is active, controls will
+          automatically orbit around that body.
+        </div>
+      </div>
+
+      <!-- Mobile / Tablet instructions -->
+      <div class="navigation-instructions mobile-only">
+        <h3 class="instructions-title">👆 Touch Controls</h3>
+
+        <div class="control-section">
+          <h4 class="section-heading">Gestures</h4>
+          <ul class="control-list">
+            <li><strong>Orbit:</strong> One-finger drag</li>
+            <li><strong>Zoom:</strong> Two-finger pinch</li>
+            <li><strong>Pan:</strong> Three-finger drag</li>
+          </ul>
+        </div>
+
+        <div class="control-section">
+          <h4 class="section-heading">Navigation</h4>
+          <ul class="control-list">
+            <li>Use the buttons above to jump to any planet</li>
+            <li>
+              <strong>Free Cam</strong> unlocks the camera from the tracked body
+            </li>
+            <li>
+              <strong>System</strong> resets to the full solar system view
+            </li>
+          </ul>
+        </div>
+
+        <div class="instructions-tip">
+          <strong>Tip:</strong> Tap a planet button first, then use Free Cam to
+          explore freely around that area.
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const uiContainer = document.getElementById("ui");
+
+      menuToggle.addEventListener("click", () => {
+        uiContainer.classList.toggle("ui-hidden");
+      });
+    </script>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
