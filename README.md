@@ -22,7 +22,8 @@ An interactive, real-time 3D solar system built with **Three.js** — featuring 
 
 ---
 
-<img width="1920" height="916" alt="image" src="https://github.com/user-attachments/assets/273c1f47-2031-4b65-b46a-5b8588cf57aa" />
+<img width="1920" height="916" alt="image" src="https://github.com/user-attachments/assets/fc1d91d4-ab88-432a-a1ee-8200d22915ee" />
+
 
 
 ## 🪐 Planets & Scale
